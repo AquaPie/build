@@ -45,7 +45,7 @@ default_team_rem = "carbon"
 # this shouldn't change unless google makes changes
 local_manifest_dir = ".repo/local_manifests"
 # change this to your name on github (or equivalent hosting)
-android_team = "CarbonROM"
+android_team = "AquariOS"
 # url to gerrit repository
 gerrit_url = "review.carbonrom.org"
 
