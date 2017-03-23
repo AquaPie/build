@@ -27,7 +27,6 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - sgrep:     Greps on all local source files.
 - godir:     Go to the directory containing a file.
 - cmremote: Add git remote for matching CM repository.
-- crremote: Add gerrit remote for matching Carbon repository.
 - mka:      Builds using SCHED_BATCH on all processors
 - repolastsync: Prints date and time of last repo sync.
 - repopick: Utility to fetch changes from Gerrit.
