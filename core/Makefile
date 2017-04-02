@@ -3078,7 +3078,7 @@ aquarios: otapackage
 	@echo -e ${CL_YLW}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
 	@echo -e ${CL_CYN}"Package zip: "${CL_MAG} $(AQUARIOS_TARGET_PACKAGE)                                 ${CL_RST}
 	@echo -e ${CL_CYN}"Package md5: "${CL_MAG}" `cat $(AQUARIOS_TARGET_PACKAGE).md5sum | cut -d ' ' -f 1`"${CL_RST}
-	@echo -e ${CL_CYN}"Package size:"${CL_MAG}" `ls -lah $(AQUARIOS_TARGET_PACKAGE) | cut -d ' ' -f 5`   "${CL_RST}
+	@echo -e ${CL_CYN}"Package size:"${CL_MAG}" `du -h $(AQUARIOS_TARGET_PACKAGE) | cut -f 1`            "${CL_RST}
 	@echo -e ${CL_YLW}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
 
 endif    # build_ota_package
