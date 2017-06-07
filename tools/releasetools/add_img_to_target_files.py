@@ -451,7 +451,6 @@ def AddPartitionTable(output_zip):
   img.Write()
   bpt.Write()
 
-
 def AddUserdataExtra(output_zip):
   """Create extra userdata image and store it in output_zip."""
 
@@ -486,40 +485,6 @@ def AddUserdataExtra(output_zip):
   img.close()
   os.rmdir(user_dir)
   os.rmdir(temp_dir)
-
-
-def AddCache(output_zip):
-  """Create an empty cache image and store it in output_zip."""
-
-  img = OutputFile(output_zip, OPTIONS.input_tmp, "IMAGES", "cache.img")
-  if os.path.exists(img.input_name):
-    print("cache.img already exists; no need to rebuild...")
-    return
-
-  image_props = build_image.ImagePropFromGlobalDict(OPTIONS.info_dict, "cache")
-  # The build system has to explicitly request for cache.img.
-  if "fs_type" not in image_props:
-    return
-
-  print("creating cache.img...")
-
-  # Use a fixed timestamp (01/01/2009) when packaging the image.
-  # Bug: 24377993
-  epoch = datetime.datetime.fromtimestamp(0)
-  timestamp = (datetime.datetime(2009, 1, 1) - epoch).total_seconds()
-  image_props["timestamp"] = int(timestamp)
-
-  user_dir = common.MakeTempDir()
-
-  fstab = OPTIONS.info_dict["fstab"]
-  if fstab:
-    image_props["fs_type"] = fstab["/cache"].fs_type
-  succ = build_image.BuildImage(user_dir, image_props, img.name)
-  assert succ, "build cache.img image failed"
-
-  common.CheckSize(img.name, "cache.img", OPTIONS.info_dict)
-  img.Write()
-
 
 def AddRadioImagesForAbOta(output_zip, ab_partitions):
   """Adds the radio images needed for A/B OTA to the output file.
@@ -640,7 +605,6 @@ def AddPackRadioImages(output_zip, images):
     else:
       shutil.copy(img_radio_path, prebuilt_path)
 
-
 def ReplaceUpdatedFiles(zip_filename, files_list):
   """Updates all the ZIP entries listed in files_list.
 
@@ -656,7 +620,6 @@ def ReplaceUpdatedFiles(zip_filename, files_list):
     assert os.path.exists(file_path)
     common.ZipWrite(output_zip, file_path, arcname=item)
   common.ZipClose(output_zip)
-
 
 def AddImagesToTargetFiles(filename):
   """Creates and adds images (boot/recovery/system/...) to a target_files.zip.
@@ -779,8 +742,6 @@ def AddImagesToTargetFiles(filename):
     AddUserdata(output_zip)
     banner("extrauserdata")
     AddUserdataExtra(output_zip)
-    banner("cache")
-    AddCache(output_zip)
 
   if OPTIONS.info_dict.get("board_bpt_enable") == "true":
     banner("partition-table")
