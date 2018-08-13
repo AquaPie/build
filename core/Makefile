@@ -3065,15 +3065,15 @@ ifdef BUILT_VENDOR_MATRIX
 	$(hide) cp $(BUILT_VENDOR_MATRIX) $(zip_root)/META/vendor_matrix.xml
 endif
 
-# Export signing properties on Carbon Builds
-ifneq ($(CARBON_BUILD),)
-	$(shell echo "CARBON_BUILD=$(CARBON_BUILD)" > $(PRODUCT_OUT)/signing.props)
+# Export signing properties on Aquarios Builds
+ifneq ($(AQUARIOS_BUILD),)
+	$(shell echo "AQUARIOS_BUILD=$(AQUARIOS_BUILD)" > $(PRODUCT_OUT)/signing.props)
 	$(shell echo "TARGET_OTA_ASSERT_DEVICE=$(TARGET_OTA_ASSERT_DEVICE)" >> $(PRODUCT_OUT)/signing.props)
 	$(shell echo "TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT=$(TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT)" >> $(PRODUCT_OUT)/signing.props)
 	$(shell echo "TARGET_UNIFIED_DEVICE=$(TARGET_UNIFIED_DEVICE)" >> $(PRODUCT_OUT)/signing.props)
 	$(shell echo "TARGET_DEVICE=$(TARGET_DEVICE)" >> $(PRODUCT_OUT)/signing.props)
 	$(shell echo "TARGET_SETS_FSTAB=$(TARGET_SETS_FSTAB)" >> $(PRODUCT_OUT)/signing.props)
-	$(shell echo "CARBON_VERSION=$(CARBON_VERSION)" >> $(PRODUCT_OUT)/signing.props)
+	$(shell echo "AQUARIOS_VERSION=$(AQUARIOS_VERSION)" >> $(PRODUCT_OUT)/signing.props)
 	$(shell echo "TARGET_RELEASETOOL_OTA_FROM_TARGET_ADDITIONAL_ARGS=$(TARGET_RELEASETOOL_OTA_FROM_TARGET_ADDITIONAL_ARGS)" >> $(PRODUCT_OUT)/signing.props)
 endif
 
@@ -3121,7 +3121,7 @@ else
 $(INTERNAL_OTA_PACKAGE_TARGET): $(BROTLI)
 endif
 
-ifneq ($(CARBON_BUILD),)
+ifneq ($(AQUARIOS_BUILD),)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
 else
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
