@@ -3064,9 +3064,9 @@ aquarios: otapackage
 	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(AQUARIOS_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(AQUARIOS_TARGET_PACKAGE) > $(AQUARIOS_TARGET_PACKAGE).md5sum
 	@echo -e "Package complete: $(AQUARIOS_TARGET_PACKAGE)"
- 	@echo -e ""
-	@echo -e ""
-	@echo -e ""
+
+
+
 	@echo -e ${5fffff}"	                                   oo                          "${CL_RST}
 	@echo -e ${5fffff}"	                                oooo                           "${CL_RST}
 	@echo -e ${5fffff}"	                          oooooooooooo                         "${CL_RST}
