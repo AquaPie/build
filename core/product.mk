@@ -324,7 +324,8 @@ _product_stash_var_list += \
 _product_stash_var_list += \
 	DEFAULT_SYSTEM_DEV_CERTIFICATE \
 	WITH_DEXPREOPT \
-	WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY
+	WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY \
+	WITH_DEXPREOPT_APP_IMAGE
 
 # Logical partitions related variables.
 _product_stash_var_list += \
